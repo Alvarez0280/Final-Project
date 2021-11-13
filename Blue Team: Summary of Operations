@@ -33,13 +33,13 @@ Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are pos
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
 
 #### Name of Alert 1
-_TODO: Replace `Alert 1` with the name of the alert._
+Excwssive HTTP Errors
 
 Alert 1 is implemented as follows:
-  - **Metric**: TODO
-  - **Threshold**: TODO
-  - **Vulnerability Mitigated**: TODO
-  - **Reliability**: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
+  - **Metric**: WHEN count() GROUPED OVER top 5 'http.response.status_code' 
+  - **Threshold**: IS ABOVE 400
+  - **Vulnerability Mitigated**: Enumeration/ Brute Force
+  - **Reliability**: This alert i highly reliable. Measuring the error code that are 400 and above filter out the normal activity or successful response. 400 and plus codes are client and server errors which are ones of more concer. Especially, when the error codes happen at a high rate.
 
 #### Name of Alert 2
 Alert 2 is implemented as follows:
